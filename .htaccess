@@ -1,2 +1,2 @@
 # Ensure that the appcache manifest is served correctly
-AddType text/cache-manifest .appcache
+#AddType text/cache-manifest .appcache

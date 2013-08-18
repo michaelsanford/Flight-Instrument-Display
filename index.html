@@ -1,9 +1,69 @@
 <!DOCTYPE html>
-<html manifest="manifest.appcache">
+<html>
+
 <head>
 	<title>Flight Instrument Display</title>
+	<link rel="stylesheet" href="styles.css" />
+	<script type="text/javascript" src="scripts.js"></script>
 </head>
 <body>
+
+	<section>
+
+		<header>
+			Flight Instrument Display
+		</header>
+
+		<article id="message"></article>
+
+		<article id="altitude">
+			<header>Altitude</header>
+			<p class="data">
+				<span class="value">&mdash;</span>
+				<span class="units">m</span>
+			</p>
+			<p class="accuracy">
+				<span class="value">&mdash;</span>
+				<span class="units">m</span>
+			</p>
+		</article>
+
+		<article id="speed">
+			<header>Ground Speed</header>
+			<p class="data">
+				<span class="value">&mdash;</span>
+				<span class="units">km/h</span>
+			</p>
+		</article>
+
+		<article id="heading" class="left">
+			<header>Heading</header>
+			<p class="data">
+				<span class="value">&mdash;</span>
+				<span class="units">&deg</span>
+			</p>
+		</article>
+
+		<article id="location" class="right">
+			<header>Co-ordinates</header>
+			<p class="data">
+				<span class="value">
+					&mdash;
+				</span>
+			</p>
+			<p class="accuracy">
+				<span class="value">&mdash;</span>
+				<span class="units">m</span>
+			</p>
+		</article>
+
+		<div class="clear" />
+
+		<footer>
+			<p id="updated">2013:10:10 12h42s22</p>
+		</footer>
+
+	</section>
 
 </body>
 </html>

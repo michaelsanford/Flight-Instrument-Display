@@ -1,17 +1,14 @@
 Flight-Instrument-Display
 =========================
 
-Offline HTML5 SPA showing interesting flight data metrics. :airplane:
+Offline HTML5 SPA showing interesting flight data metrics.
 
 This app shows information about the aircraft you are currently sitting in (which is probably in flight,
  or this will be boring to look at).
 
 _It's not a flight tracker._
 
-# Currently-supported Instrumentation
-:construction: Working on it.
-
-# Planned Instrumentation
+# Currently-supported Instrumentation :airplane:
 - Altitide
 - Altitide Accuracy
 - Groud speed
@@ -19,6 +16,7 @@ _It's not a flight tracker._
 - Location
 - Location Accuracy
 
+# Planned Instrumentation :construction:
 - Aircraft attitude: degree of pitch, yaw & roll. (** Physics and the manner in which mobile device sensors are built will make these inherently inaccurate while
  maneouvering.)
 
