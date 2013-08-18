@@ -1,0 +1,13 @@
+CACHE MANIFEST
+# Bump 1
+
+#CACHE:
+#index.html
+#scripts.min.js
+#styles.min.css
+
+#FALLBACK:
+
+NETWORK:
+*
+
