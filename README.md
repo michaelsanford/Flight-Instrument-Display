@@ -17,6 +17,7 @@ _It's not a flight tracker._
 - Location Accuracy
 
 # Planned Instrumentation :construction:
+- Vertical Speed (V/S) i.e., rate of climb or descent.
 - Aircraft attitude: degree of pitch, yaw & roll. (** Physics and the manner in which mobile device sensors are built will make these inherently inaccurate while
  maneouvering.)
 
