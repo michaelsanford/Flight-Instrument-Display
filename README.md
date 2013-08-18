@@ -26,6 +26,12 @@ _It's not a flight tracker._
 - Cabin temperature
 - Cabin relative humidity
 
+# Caveats
+This app uses sensors, including GPS and is event-bound to watch for movement. *It is a battery hog.*
+Significant improvements aren't difficult to implement and will come in later a revision.
+
+This app uses only passive sensors and will work in Airplane Mode.
+
 # Units
 Currently, all units are metric.
 

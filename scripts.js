@@ -20,13 +20,19 @@ FID.units = {
 	}
 };
 
+FID.geoConfig = {
+	enableHighAccuracy: true,
+	timeout: Infinity,
+	maximumAge: 30
+};
+
 FID.elements = {};
 
 FID.showPosition = function(position) {
 
 	var altitude = position.coords.altitude || "&mdash;",
 		altitudeAccuracy = position.coords.altitudeAccuracy || "&mdash;",
-		gspeed = position.coords.speed ||  "&mdash;",
+		gspeed = (position.coords.speed || 0).toFixed(2),
 		vspeed = FID.calculateVS(position) || "&mdash;",
 		updated = new Date(position.timestamp).toLocaleTimeString(),
 		location = (position.coords.latitude.toFixed(7) + '<br />' + position.coords.longitude.toFixed(7)) || "&mdash;",
@@ -102,11 +108,13 @@ FID.init = function() {
 			innerHTML = FID.units.metric.micro;
 
 		navigator.geolocation.watchPosition(function(position) {
-			FID.debug("Position Changed!");
-
-			FID.showPosition(position);
-			FID.oldPosition = position;
-		});
+				FID.debug("Position Changed!");
+				FID.showPosition(position);
+				FID.oldPosition = position;
+			},
+			FID.errorHandler,
+			FID.geoConfig
+		);
 
 	} else {
 
