@@ -36,5 +36,5 @@ I plan to implement a "pilot mode" which will display information in a format fa
 I'll eventually add imperial.
 
 ## Props
-The idea came from Web Bos' [HTML5-Speedometer](https://github.com/wesbos/HTML5-Speedometer) example for his device API presentation at [jQueryTO 2012](http://jqueryto.com/).
+The idea came from [Wes Bos](https://twitter.com/wesbos)' [HTML5-Speedometer](https://github.com/wesbos/HTML5-Speedometer) example for his device API presentation at [jQueryTO 2012](http://jqueryto.com/).
  This is a rewrite, tailored for air travelers.
