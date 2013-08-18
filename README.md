@@ -9,22 +9,22 @@ This app shows information about the aircraft you are currently sitting in (whic
 _It's not a flight tracker._
 
 # Currently-supported Instrumentation
-- [ ] Altitide
-- [ ] Altitide Accuracy
-- [ ] Groud speed
-- [ ] Heading
-- [ ] Location
-- [ ] Location Accuracy
 
-- [ ] Aircraft attitude (degree of pitch, yaw & roll)*.
+# PlannedInstrumentation 
+- Altitide
+- Altitide Accuracy
+- Groud speed
+- Heading
+- Location
+- Location Accuracy
 
-* Physics and the manner in which mobile device sensors are built will make these inherently inaccurate while
- maneouvering.
+- Aircraft attitude: degree of pitch, yaw & roll. (** Physics and the manner in which mobile device sensors are built will make these inherently inaccurate while
+ maneouvering.)
 
 (These probably won't happen for a while as the Sensor API was shelved.)
-- [ ] Cabin pressure
-- [ ] Cabin temperature
-- [ ] Cabin relative humidity
+- Cabin pressure
+- Cabin temperature
+- Cabin relative humidity
 
 # Units
 Currently, all units are metric.
