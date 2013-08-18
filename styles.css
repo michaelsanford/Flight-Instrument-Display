@@ -89,6 +89,18 @@ footer {
 	color: gray;
 }
 
+#trace {
+	/*display: none;*/
+}
+
+#debug {
+	border: 1px dashed salmon;
+}
+
+#debug li {
+	padding-top: 5px;
+}
+
 .clear {
 	clear: both;
 }

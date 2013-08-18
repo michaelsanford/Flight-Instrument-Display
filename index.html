@@ -4,7 +4,6 @@
 <head>
 	<title>Flight Instrument Display</title>
 	<link rel="stylesheet" href="styles.css" />
-	<script type="text/javascript" src="scripts.js"></script>
 </head>
 <body>
 
@@ -24,15 +23,23 @@
 			</p>
 			<p class="accuracy">
 				<span class="value">&mdash;</span>
-				<span class="units">m</span>
+				<span class="units"></span>
 			</p>
 		</article>
 
-		<article id="speed">
+		<article id="ground-speed" class="left">
 			<header>Ground Speed</header>
 			<p class="data">
 				<span class="value">&mdash;</span>
 				<span class="units">km/h</span>
+			</p>
+		</article>
+
+		<article id="vertical-speed" class="right">
+			<header>V/S</header>
+			<p class="data">
+				<span class="value">&mdash;</span>
+				<span class="units">m/s</span>
 			</p>
 		</article>
 
@@ -60,10 +67,19 @@
 		<div class="clear" />
 
 		<footer>
-			<p id="updated">2013:10:10 12h42s22</p>
+			<p id="updated">&mdash;</p>
 		</footer>
 
 	</section>
 
+	<section id="trace">
+		<article>
+			<header>Debug Trace</header>
+			<ol id="debug" />
+		</article>
+
+	</section>
+
 </body>
+	<script type="text/javascript" src="scripts.js"></script>
 </html>
