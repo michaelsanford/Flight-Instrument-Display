@@ -8,6 +8,9 @@ This app shows information about the aircraft you are currently sitting in (whic
 
 _It's not a flight tracker._
 
+#Build Status
+:cloud: Functions, but not brilliant.
+
 # Currently-supported Instrumentation :airplane:
 - Altitide
 - Altitide Accuracy
