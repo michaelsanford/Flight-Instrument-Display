@@ -5,13 +5,18 @@ body {
 	border-radius: 5px;
 
 	font-family: sans-serif;
+	font-size: 100%;
+	line-height:2em;
 }
 
 nav {
 	width: 100%;
 	padding: 0;
-	height: 40px;
-	background-color: red;
+}
+
+nav button {
+	font-size: 2em;
+	padding: 10px;
 }
 
 nav ul li {
@@ -21,8 +26,8 @@ nav ul li {
 }
 
 section header {
-	font-size: large;
-	padding: 2px;
+	font-size: 3em;
+	padding: 0.2em;
 	text-align: center;
 }
 
@@ -34,12 +39,12 @@ article {
 
 /* Instrument values */
 article header {
-	font-size: large;
+	font-size: 2em;
 	text-align: center;
 	background-color: navy;
 	color: white;
 	border-radius: 5px;
-	padding: 3px;
+	padding: 0.4em;
 }
 
 article p {
@@ -47,21 +52,21 @@ article p {
 }
 
 .data .value {
-	font-size: xx-large;
+	font-size: 3em;
 	color: green;
 }
 
 .data .units {
-	font-size: x-large;
+	font-size: 2em;
 	color: darkred;
 }
 
 .accuracy .value {
-	font-size: small;
+	font-size: 1.8em;
 }
 
 .accuracy .units {
-	font-size: small;
+	font-size: 1.8em;
 	color: darkred;
 }
 
