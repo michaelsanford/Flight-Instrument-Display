@@ -9,14 +9,9 @@
 
 	<section>
 
-		<header>
-			Flight Instrument Display
-		</header>
-
-		<nav>
-			<button id="start">Monitor</button>
-			<button id="stop">Disable</button>
-		</nav>
+		<!--<header>-->
+			<!--Flight Instrument Display-->
+		<!--</header>-->
 
 		<article id="message"></article>
 
@@ -28,7 +23,7 @@
 			</p>
 			<p class="accuracy">
 				<span class="value">&mdash;</span>
-				<span class="units"></span>
+				<span class="units">m</span>
 			</p>
 		</article>
 
@@ -65,14 +60,24 @@
 			</p>
 			<p class="accuracy">
 				<span class="value">&mdash;</span>
-				<span class="units">m</span>
+				<span class="units"></span>
 			</p>
 		</article>
 
 		<div class="clear" />
 
 		<footer>
-			<p id="updated">&mdash;</p>
+
+			<nav>
+				<button id="start">Monitor</button>
+				<button id="stop" disabled>Disable</button>
+
+			</nav>
+
+			<p>
+				<span id="updated"></span>
+				<span id="state"></span>
+			</p>
 		</footer>
 
 	</section>

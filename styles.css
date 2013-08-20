@@ -11,12 +11,26 @@ body {
 
 nav {
 	width: 100%;
-	padding: 0;
+	text-align: center;
+	padding: 1em 0;
+}
+
+#message {
+	display: none;
+	padding: 0.5em;
+	margin: 0.3em;
+	color: darkred;
+	background-color: yellow;
+	border: 3px dashed red;
+	border-radius: 4px;
+	text-align: center;
+	font-size: 2.5em;
 }
 
 nav button {
 	font-size: 2em;
-	padding: 10px;
+	padding: 0.8em 1.5em;
+	margin: 0 1.1em;
 }
 
 nav ul li {
@@ -39,7 +53,7 @@ article {
 
 /* Instrument values */
 article header {
-	font-size: 2em;
+	font-size: 3em;
 	text-align: center;
 	background-color: navy;
 	color: white;
@@ -52,24 +66,58 @@ article p {
 }
 
 .data .value {
-	font-size: 3em;
-	color: green;
+	font-size: 4em;
+	line-height: 1em;
+	color: black;
 }
 
 .data .units {
 	font-size: 2em;
-	color: darkred;
+	color: dimgray;
 }
 
-.accuracy .value {
+/*.accuracy .value {*/
+	/*font-size: 1.8em;*/
+/*}*/
+
+/*.accuracy .units {*/
+	/*font-size: 1.8em;*/
+	/*color: darkred;*/
+/*}*/
+
+.accuracy {
 	font-size: 1.8em;
+	color: royalblue;
 }
 
-.accuracy .units {
-	font-size: 1.8em;
-	color: darkred;
+.accuracy:before {
+	content:"(\00b1\00a0";
 }
 
+.accuracy:after {
+	content:")";
+}
+
+footer {
+	text-align: center;
+	color: gray;
+}
+
+#updated {}
+
+#state {}
+
+#trace {
+	display: none;
+}
+
+#debug {
+	border: 1px dashed salmon;
+}
+
+#debug li {
+	padding-top: 5px;
+}
 
 .left {
 	width: 49%;
@@ -79,31 +127,6 @@ article p {
 .right {
 	width: 49%;
 	float: right;
-}
-
-article .accuracy {
-	color: royalblue;
-}
-
-article .accuracy:before {
-	content:"\00b1\00a0";
-}
-
-footer {
-	text-align: center;
-	color: gray;
-}
-
-#trace {
-	/*display: none;*/
-}
-
-#debug {
-	border: 1px dashed salmon;
-}
-
-#debug li {
-	padding-top: 5px;
 }
 
 .clear {

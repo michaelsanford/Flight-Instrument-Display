@@ -31,14 +31,14 @@ FID.elements = {};
 FID.showPosition = function(position) {
 	"use strict";
 
-	var altitude = position.coords.altitude || "&mdash;",
-		altitudeAccuracy = position.coords.altitudeAccuracy || "&mdash;",
+	var altitude = Math.round(position.coords.altitude) || "&mdash;",
+		altitudeAccuracy = Math.round(position.coords.altitudeAccuracy) || "&mdash;",
 		heading = position.coords.heading || "&mdash;",
-		gspeed = (position.coords.speed || 0).toFixed(2),
+		gspeed = Math.round(position.coords.speed),
 		vspeed = FID.calculateVS(position) || "&mdash;",
 		updated = new Date(position.timestamp).toLocaleTimeString(),
 		location = (position.coords.latitude.toFixed(7) + '<br />' + position.coords.longitude.toFixed(7)) || "&mdash;",
-		accuracy = position.coords.accuracy.toFixed(2) || "&mdash;";
+		accuracy = Math.round(position.coords.accuracy) || "&mdash;";
 
 	FID.debug(JSON.stringify({
 		GS: gspeed,
@@ -77,6 +77,7 @@ FID.errorHandler = function(error) {
 
 	FID.debug("Err!");
 	var message = document.getElementById('message');
+	message.style.display = "block";
 
 	switch (error.code) {
 		case error.PERMISSION_DENIED:
@@ -110,6 +111,7 @@ FID.startMonitor = function() {
 
 	document.getElementById("stop").removeAttribute("disabled");
 	document.getElementById("start").setAttribute("disabled");
+	document.getElementById("state").innerHTML = "(Monitoring)";
 };
 
 FID.clearMonitor = function() {
@@ -124,6 +126,7 @@ FID.clearMonitor = function() {
 
 	document.getElementById("start").removeAttribute("disabled");
 	document.getElementById("stop").setAttribute("disabled");
+	document.getElementById("state").innerHTML = "(Stale Position)";
 };
 
 FID.init = function() {
@@ -152,13 +155,13 @@ FID.init = function() {
 
 		FID.debug("I can haz unitz!");
 
-		document.
-			querySelector('#altitude .data .units').
-			innerHTML = FID.units.metric.micro;
-
-		document.
-			querySelector('#altitude .data .units').
-			innerHTML = FID.units.metric.micro;
+//		document.
+//			querySelector('#altitude .data .units').
+//			innerHTML = FID.units.metric.micro;
+//
+//		document.
+//			querySelector('#altitude .data .units').
+//			innerHTML = FID.units.metric.micro;
 
 	} else {
 
