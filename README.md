@@ -9,7 +9,7 @@ This app shows information about the aircraft you are currently sitting in (whic
 _It's not a flight tracker._
 
 #Build Status
-:cloud: Functions, but not brilliant.
+:hatching_chick: Getting there…
 
 # Currently-supported Instrumentation :airplane:
 - Altitide
@@ -18,9 +18,9 @@ _It's not a flight tracker._
 - Heading
 - Location
 - Location Accuracy
+- Vertical Speed (V/S) i.e., rate of climb or descent.
 
 # Planned Instrumentation :construction:
-- Vertical Speed (V/S) i.e., rate of climb or descent.
 - Aircraft attitude: degree of pitch, yaw & roll. (** Physics and the manner in which mobile device sensors are built will make these inherently inaccurate while
  maneouvering.)
 
