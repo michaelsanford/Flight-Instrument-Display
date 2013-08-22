@@ -43,6 +43,7 @@ FID.showPosition = function(position) {
 	FID.debug(JSON.stringify({
 		GS: gspeed,
 		A: altitude,
+		VS: vspeed,
 		H: heading
 	}));
 
@@ -59,17 +60,26 @@ FID.showPosition = function(position) {
 FID.calculateVS = function(position) {
 	"use strict";
 
-	if (position.timestamp && FID.oldPosition) {
-		var timeDelta = (position.timestamp - FID.oldPosition.timestamp) * 1000 || 0,
-			altitudeDelta = position.altitude - FID.oldPosition.altitude,
-			accuracyMeanDelta = ((position.altitudeAccuracy + FID.oldPosition.altitudeAccuracy) / 2);
+//	FID.debug(FID.oldPosition.coords.altitude);
+//	FID.debug(position.coords.altitude);
 
-		FID.debug("Altitide changed: " + (altitudeDelta / timeDelta).toString());
-		return altitudeDelta / timeDelta;
+	if (position.timestamp && FID.oldPosition.timestamp) {
+
+		var timeDelta = ((position.timestamp - FID.oldPosition.timestamp) * 1000),
+			altitudeDelta = (position.coords.altitude - FID.oldPosition.coords.altitude),
+			accuracyMeanDelta = ((position.coords.altitudeAccuracy + FID.oldPosition.coords.altitudeAccuracy) / 2);
+
+		console.dir(position, FID.oldPosition);
+
+		FID.debug("Altitude changed: " + (altitudeDelta / timeDelta));
+		return (altitudeDelta / timeDelta);
+
+	} else {
+
+		FID.debug("V/S requires old position, which isn't present.");
+		return null;
 	}
 
-	FID.debug("V/S requires old position, which isn't present.");
-	return null;
 };
 
 FID.errorHandler = function(error) {
@@ -109,8 +119,7 @@ FID.startMonitor = function() {
 		FID.geoConfig
 	);
 
-	document.getElementById("stop").removeAttribute("disabled");
-	document.getElementById("start").setAttribute("disabled");
+	document.getElementById("monitor").innerHTML = "&#9673;";
 	document.getElementById("state").innerHTML = "(Monitoring)";
 };
 
@@ -124,20 +133,30 @@ FID.clearMonitor = function() {
 		delete FID.geoWatch;
 	}
 
-	document.getElementById("start").removeAttribute("disabled");
-	document.getElementById("stop").setAttribute("disabled");
+	if (FID.geoInterval) {
+		window.clearInterval(FID.geoInterval);
+		delete FID.geoInterval;
+	}
+
+	document.getElementById("monitor").innerHTML = "&#9711;";
 	document.getElementById("state").innerHTML = "(Stale Position)";
 };
 
 FID.init = function() {
 	"use strict";
 
-	document.getElementById("start").addEventListener("click", function() {
-		FID.startMonitor();
+	document.getElementById("gauge").addEventListener("click", function(){
+		FID.debug("vis!");
 	});
 
-	document.getElementById("stop").addEventListener("click", function() {
-		FID.clearMonitor();
+	document.getElementById("monitor").addEventListener("click", function() {
+
+		if (FID.geoWatch === undefined) {
+			FID.startMonitor();
+		} else {
+			FID.clearMonitor();
+		}
+
 	});
 
 	if (navigator.geolocation) {
@@ -153,7 +172,12 @@ FID.init = function() {
 		FID.elements.locationAccuracy = document.querySelector('#location .accuracy .value');
 		FID.elements.updated = document.querySelector('#updated');
 
-		FID.debug("I can haz unitz!");
+		FID.oldPosition = {};
+
+		FID.requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame ||
+			window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
+
+		FID.cancelAnimationFrame = window.cancelAnimationFrame || window.mozCancelAnimationFrame;
 
 //		document.
 //			querySelector('#altitude .data .units').

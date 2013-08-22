@@ -28,8 +28,9 @@ nav {
 }
 
 nav button {
-	font-size: 2em;
-	padding: 0.8em 1.5em;
+	font-size: 5em;
+	height: 1.8em;
+	padding: 0.1em 0.5em;
 	margin: 0 1.1em;
 }
 
@@ -108,15 +109,18 @@ footer {
 #state {}
 
 #trace {
-	display: none;
+	/*display: none;*/
+	display: block;
 }
 
 #debug {
 	border: 1px dashed salmon;
+	/*width: 60%;*/
+	width: auto;
 }
 
 #debug li {
-	padding-top: 5px;
+	padding: 3px 20px;
 }
 
 .left {
