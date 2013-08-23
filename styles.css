@@ -50,6 +50,7 @@ section header {
 article {
 	border-collapse: collapse;
 	padding: 1px;
+	text-align: center;
 }
 
 /* Instrument values */
@@ -62,8 +63,14 @@ article header {
 	padding: 0.4em;
 }
 
+canvas {
+	margin: 0 auto;
+	width: 49%;
+}
+
 article p {
 	text-align: center;
+	/*width: 49%;*/
 }
 
 .data .value {
@@ -109,8 +116,8 @@ footer {
 #state {}
 
 #trace {
-	/*display: none;*/
-	display: block;
+	display: none;
+	/*display: block;*/
 }
 
 #debug {

@@ -1,32 +1,30 @@
 var FID = {};
 
-FID.units = {
-	metric: {
-		macro: "km",
-		micro: "m",
-		speed: "km/h"
-	},
-
-	flight: {
-		macro: "nm",
-		micro: "f",
-		speed: "kts"
-	},
-
-	imperial: {
-		macro: "miles",
-		micro: "feet",
-		speed: "mph"
-	}
-};
+FID.elements = {};
+FID.gauge = {};
 
 FID.geoConfig = {
 	enableHighAccuracy: true,
 	timeout: Infinity,
-	maximumAge: 30
+	maximumAge: 10000 // 10 seconds
 };
 
-FID.elements = {};
+FID.gaugeConfig = {
+	lines: 12, // The number of lines to draw
+	angle: 0.15, // The length of each line
+	lineWidth: 0.44, // The line thickness
+	pointer: {
+		length: 0.9, // The radius of the inner circle
+		strokeWidth: 0.055, // The rotation offset
+		color: '#000000' // Fill color
+	},
+	limitMax: 'false',   // If true, the pointer will not go past the end of the gauge
+
+	colorStart: '#6FADCF',   // Colors
+	colorStop: '#8FC0DA',    // just experiment with them
+	strokeColor: '#E0E0E0',   // to see which ones work best for you
+	generateGradient: true
+};
 
 FID.showPosition = function(position) {
 	"use strict";
@@ -34,7 +32,7 @@ FID.showPosition = function(position) {
 	var altitude = Math.round(position.coords.altitude) || "&mdash;",
 		altitudeAccuracy = Math.round(position.coords.altitudeAccuracy) || "&mdash;",
 		heading = position.coords.heading || "&mdash;",
-		gspeed = Math.round(position.coords.speed),
+		gspeed = Math.round(position.coords.speed * 3.6),
 		vspeed = FID.calculateVS(position) || "&mdash;",
 		updated = new Date(position.timestamp).toLocaleTimeString(),
 		location = (position.coords.latitude.toFixed(7) + '<br />' + position.coords.longitude.toFixed(7)) || "&mdash;",
@@ -55,13 +53,22 @@ FID.showPosition = function(position) {
 	FID.elements.location.innerHTML = location;
 	FID.elements.locationAccuracy.innerHTML = accuracy;
 	FID.elements.updated.innerHTML = updated;
+
+	if (!isNaN(altitude) && altitude > 0) {
+		FID.gauge.altitude.set(altitude);
+	}
+
+	if (!isNaN(gspeed) && gspeed > 0) {
+		FID.gauge.groundSpeed.set(gspeed);
+	}
+
+	if (!isNaN(vspeed)) {
+		FID.gauge.verticalSpeed.set(Math.abs(vspeed));
+	}
 };
 
 FID.calculateVS = function(position) {
 	"use strict";
-
-//	FID.debug(FID.oldPosition.coords.altitude);
-//	FID.debug(position.coords.altitude);
 
 	if (position.timestamp && FID.oldPosition.timestamp) {
 
@@ -72,7 +79,7 @@ FID.calculateVS = function(position) {
 		console.dir(position, FID.oldPosition);
 
 		FID.debug("Altitude changed: " + (altitudeDelta / timeDelta));
-		return (altitudeDelta / timeDelta);
+		return Math.round(altitudeDelta / timeDelta);
 
 	} else {
 
@@ -119,7 +126,7 @@ FID.startMonitor = function() {
 		FID.geoConfig
 	);
 
-	document.getElementById("monitor").innerHTML = "&#9673;";
+	document.getElementById("monitor").innerHTML = "Stop";
 	document.getElementById("state").innerHTML = "(Monitoring)";
 };
 
@@ -138,16 +145,16 @@ FID.clearMonitor = function() {
 		delete FID.geoInterval;
 	}
 
-	document.getElementById("monitor").innerHTML = "&#9711;";
+	document.getElementById("monitor").innerHTML = "Monitor";
 	document.getElementById("state").innerHTML = "(Stale Position)";
 };
 
 FID.init = function() {
 	"use strict";
 
-	document.getElementById("gauge").addEventListener("click", function(){
-		FID.debug("vis!");
-	});
+//	document.getElementById("gauge").addEventListener("click", function(){
+//		FID.debug("vis!");
+//	});
 
 	document.getElementById("monitor").addEventListener("click", function() {
 
@@ -172,20 +179,28 @@ FID.init = function() {
 		FID.elements.locationAccuracy = document.querySelector('#location .accuracy .value');
 		FID.elements.updated = document.querySelector('#updated');
 
+		FID.gauge.altitude = new Gauge(document.querySelector('#altitude canvas')).setOptions(FID.gaugeConfig);
+		FID.gauge.altitude.maxValue = 150; // set max gauge value
+		FID.gauge.altitude.animationSpeed = 50; // set animation speed (32 is default value)
+		FID.gauge.altitude.set(0);
+
+		FID.gauge.groundSpeed = new Gauge(document.querySelector('#ground-speed canvas')).setOptions(FID.gaugeConfig);
+		FID.gauge.groundSpeed.maxValue = 150; // set max gauge value
+		FID.gauge.groundSpeed.animationSpeed = 50; // set animation speed (32 is default value)
+		FID.gauge.groundSpeed.set(0);
+
+		FID.gauge.verticalSpeed = new Gauge(document.querySelector('#vertical-speed canvas')).setOptions(FID.gaugeConfig);
+		FID.gauge.verticalSpeed.maxValue = 5; // set max gauge value
+		FID.gauge.verticalSpeed.animationSpeed = 50; // set animation speed (32 is default value)
+		FID.gauge.verticalSpeed.set(0);
+
+
 		FID.oldPosition = {};
 
 		FID.requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame ||
 			window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
 
 		FID.cancelAnimationFrame = window.cancelAnimationFrame || window.mozCancelAnimationFrame;
-
-//		document.
-//			querySelector('#altitude .data .units').
-//			innerHTML = FID.units.metric.micro;
-//
-//		document.
-//			querySelector('#altitude .data .units').
-//			innerHTML = FID.units.metric.micro;
 
 	} else {
 
@@ -202,9 +217,16 @@ FID.init = function() {
 	document.addEventListener("DOMContentLoaded", function(event) {
 
 		FID.debug = function (message) {
-			var li = document.createElement("li");
-			li.appendChild(document.createTextNode(message));
-			document.getElementById("debug").appendChild(li);
+
+			console.log(message);
+
+			/**
+			 * This code is designed for easy mobile debugging.
+			 * Make sure to #trace { display: block; }
+			 */
+//			var li = document.createElement("li");
+//			li.appendChild(document.createTextNode(message));
+//			document.getElementById("debug").appendChild(li);
 		};
 
 		FID.init();

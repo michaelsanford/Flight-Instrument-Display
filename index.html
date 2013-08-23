@@ -4,19 +4,17 @@
 <head>
 	<title>Flight Instrument Display</title>
 	<link rel="stylesheet" href="styles.css" />
+	<script type="text/javascript" src="gauge.min.js"></script>
 </head>
 <body>
 
 	<section>
 
-		<!--<header>-->
-			<!--Flight Instrument Display-->
-		<!--</header>-->
-
 		<article id="message"></article>
 
 		<article id="altitude">
 			<header>Altitude</header>
+			<canvas></canvas>
 			<p class="data">
 				<span class="value">&mdash;</span>
 				<span class="units">m</span>
@@ -29,6 +27,7 @@
 
 		<article id="ground-speed" class="left">
 			<header>Ground Speed</header>
+			<canvas></canvas>
 			<p class="data">
 				<span class="value">&mdash;</span>
 				<span class="units">km/h</span>
@@ -37,6 +36,7 @@
 
 		<article id="vertical-speed" class="right">
 			<header>V/S</header>
+			<canvas></canvas>
 			<p class="data">
 				<span class="value">&mdash;</span>
 				<span class="units">m/s</span>
@@ -69,8 +69,8 @@
 		<footer>
 
 			<nav>
-				<button id="monitor">&#9711;</button>
-				<button id="gauge">&#9992;</button>
+				<button id="monitor">Monitor</button>
+				<!--<button id="gauge">&#9992;</button>-->
 			</nav>
 
 			<p>
