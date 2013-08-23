@@ -9,8 +9,7 @@ This app shows information about the aircraft you are currently sitting in (whic
 _It's not a flight tracker._
 
 #Build Status
-:thumbsup: Working in modern browsers.
-:construction: Performance profiling & optimizations can begin.
+:cloud: Functions, but not brilliant.
 
 # Currently-supported Instrumentation :airplane:
 - Altitide
@@ -23,7 +22,7 @@ _It's not a flight tracker._
 # Planned Instrumentation :construction:
 - Vertical Speed (V/S) i.e., rate of climb or descent.
 - Aircraft attitude: degree of pitch, yaw & roll. (** Physics and the manner in which mobile device sensors are built will make these inherently inaccurate while
- maneuvering.)
+ maneouvering.)
 
 (These probably won't happen for a while as the Sensor API was shelved.)
 - Cabin pressure
@@ -40,7 +39,7 @@ This app uses only passive sensors and will work in Airplane Mode.
 Currently, all units are metric.
 
 I plan to implement a "pilot mode" which will display information in a format familiar to
- aviation enthusiasts. For example, altitude will be displayed as a three-digit
+ aviation enthusiasts. For example, altitide will be displayed as a three-digit
  imperial flight level (e.g., "FL350") with ground speed in knots.
 
 I'll eventually add imperial.
@@ -48,5 +47,3 @@ I'll eventually add imperial.
 ## Props
 The idea came from [Wes Bos](https://twitter.com/wesbos)' [HTML5-Speedometer](https://github.com/wesbos/HTML5-Speedometer) example for his device API presentation at [jQueryTO 2012](http://jqueryto.com/).
  This is a rewrite, tailored for air travelers.
-
-Gauges provided by [gauge.js](http://bernii.github.io/gauge.js/)!
