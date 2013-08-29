@@ -1,5 +1,5 @@
 CACHE MANIFEST
-# Thu Aug 29 01:13:47 UTC 2013
+# %TIMESTAMP%
 
 CACHE:
 index.html
