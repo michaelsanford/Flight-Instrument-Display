@@ -1,12 +1,11 @@
 CACHE MANIFEST
-# Bump 1
+# Thu Aug 29 01:13:16 UTC 2013
 
-#CACHE:
-#index.html
-#scripts.min.js
-#styles.min.css
+CACHE:
+index.html
+guage.min.js
+scripts.min.js
+styles.min.css
 
-#FALLBACK:
-
-#NETWORK:
-#*
+NETWORK:
+*
