@@ -180,12 +180,12 @@ FID.init = function() {
 		FID.elements.updated = document.querySelector('#updated');
 
 		FID.gauge.altitude = new Gauge(document.querySelector('#altitude canvas')).setOptions(FID.gaugeConfig);
-		FID.gauge.altitude.maxValue = 150; // set max gauge value
+		FID.gauge.altitude.maxValue = 12192; // set max gauge value to FL 040
 		FID.gauge.altitude.animationSpeed = 50; // set animation speed (32 is default value)
 		FID.gauge.altitude.set(0);
 
 		FID.gauge.groundSpeed = new Gauge(document.querySelector('#ground-speed canvas')).setOptions(FID.gaugeConfig);
-		FID.gauge.groundSpeed.maxValue = 150; // set max gauge value
+		FID.gauge.groundSpeed.maxValue = 1225; // set max gauge value to 1.0 mach
 		FID.gauge.groundSpeed.animationSpeed = 50; // set animation speed (32 is default value)
 		FID.gauge.groundSpeed.set(0);
 
