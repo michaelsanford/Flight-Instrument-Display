@@ -70,6 +70,8 @@ FID.showPosition = function(position) {
 FID.calculateVS = function(position) {
 	"use strict";
 
+	console.dir(position, FID.oldPosition);
+
 	if (position.timestamp && FID.oldPosition.timestamp) {
 
 		var timeDelta = ((position.timestamp - FID.oldPosition.timestamp) * 1000),
@@ -221,12 +223,15 @@ FID.init = function() {
 			console.log(message);
 
 			/**
-			 * This code is designed for easy mobile debugging.
+			 * This code is designed for easy mobile debugging on the go,
+			 * as it's fairly challenging to USB/ABD debug tethered to a laptop
+			 * while running down the street.
+			 *
 			 * Make sure to #trace { display: block; }
 			 */
-//			var li = document.createElement("li");
-//			li.appendChild(document.createTextNode(message));
-//			document.getElementById("debug").appendChild(li);
+			var li = document.createElement("li");
+			li.appendChild(document.createTextNode(message));
+			document.getElementById("debug").appendChild(li);
 		};
 
 		FID.init();
