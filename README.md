@@ -14,9 +14,9 @@ _It's not a flight tracker._
 :construction: Performance profiling & optimizations can begin.
 
 # Currently-supported Instrumentation :airplane:
-- Altitide
-- Altitide Accuracy
-- Groud speed
+- Altitude
+- Altitude Accuracy
+- Ground speed
 - Heading
 - Location
 - Location Accuracy
